@@ -5,7 +5,7 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <section id="hero-section" className="container mx-auto h-screen flex">
-      <div className="relative self-center">
+      <div className="relative self-center w-full">
         <Image
           src="/images/img-basketball.png"
           width={432}
@@ -18,10 +18,10 @@ const HeroSection = () => {
           <h1 className="font-extrabold text-[95px] italic bg-gradient-to-b leading-tight from-black to-[#979797] bg-clip-text text-transparent">
             WEAR YOUR <br /> TOP-QUALITY <br /> SPORTSWEAR
           </h1>
-          <p className="w-1/2 mt-10 leading-loose">
-            Engineered for endurance and designed for speed. Experience gear
-            that moves as fast as you do. Premium fabrics. Unmatched comfort.
-            Limitless motion.
+          <p className="w-full mt-10 leading-loose">
+            Engineered for endurance and designed for speed. Experience gear 
+            <br /> that moves as fast as you do. Premium fabrics. Unmatched comfort.
+            <br />Limitless motion.
           </p>
           <div className="flex gap-5 mt-14">
             <Button>
@@ -39,11 +39,11 @@ const HeroSection = () => {
           </div>
         </div>
         <Image
-          src="/images/img-hero.png"
+          src="/images/img-hero2.png"
           width={700}
           height={950}
           alt="image sporton hero"
-          className="absolute -right-5 top-1/2 -translate-y-1/2"
+          className="absolute right-16 top-1/2 -translate-y-1/2"
         />
       </div>
       <Image
