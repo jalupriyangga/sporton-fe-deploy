@@ -4,10 +4,23 @@ import Button from "../ui/button"
 import { FiShoppingBag, FiArrowRight, FiChevronUp, FiChevronDown } from "react-icons/fi"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { useCartStore } from "@/app/hooks/use-cart-store";
+import { Products } from "@/app/types";
 
-const ProductActions = () => {
+interface TProductActionsProps {
+    product: Products;
+    stock: number;
+}
+
+const ProductActions = ({stock, product}: TProductActionsProps) => {
+    const {addItem } = useCartStore();
     const {push} = useRouter();
     const[qty, setQty] = useState(1);
+
+    const handleAddToCart = () => {
+        addItem(product, qty);
+    }
+
     return (
 
         <div className="flex gap-5">
@@ -16,7 +29,7 @@ const ProductActions = () => {
                     <span>{qty}</span>
                 </div>
                 <div className="flex flex-col w-10">
-                    <button className="border-b border-gray-500 cursor-pointer h-1/2 flex items-center justify-center hover:bg-gray-100" onClick={() => setQty(qty + 1)}>
+                    <button className="border-b border-gray-500 cursor-pointer h-1/2 flex items-center justify-center hover:bg-gray-100" onClick={() => setQty(qty  < stock? qty + 1 : qty)}>
                         <FiChevronUp size={16} />
                     </button>
                     <button className="cursor-pointer h-1/2 flex items-center justify-center hover:bg-gray-100" onClick={() => setQty(qty > 1 ? qty - 1 : qty)}>
@@ -25,12 +38,12 @@ const ProductActions = () => {
                 </div>
             </div>
 
-            <Button>
+            <Button className="w-full" onClick={handleAddToCart}>
                 <FiShoppingBag size={20} />
                 Add to Cart
             </Button>
 
-            <Button variant="dark" onClick={() => push("/checkout")}>
+            <Button variant="dark" className="w-full" onClick={() => push("/checkout")}>
                 Checkout Now
                 <FiArrowRight size={20} />
             </Button>
