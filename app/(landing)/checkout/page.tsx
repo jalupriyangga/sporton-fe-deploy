@@ -22,7 +22,7 @@ const Checkout = () => {
       alert("Please fill in all the fields");
       return;
     }
-    alert(formData.customerAddress)
+    // alert(formData.customerAddress)
     setCustomerInfo(formData);
     push("/payment")
   }
