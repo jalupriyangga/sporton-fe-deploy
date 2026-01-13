@@ -25,7 +25,7 @@ return (
       <div className="input-group">
         <label htmlFor="customerContact">Whatsapp Number</label>
         <input
-          type="number"
+          type="tel"
           placeholder="Type your whatsapp number"
           id="customerContact"
           name="customerContact"
